@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  evaluate_features:
+    cmd: python src/models/feature_significance_RF.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 72c17e02ca0eb4685479724527347152.dir
+      size: 545505
+      nfiles: 2
+    - path: src/models/feature_significance_RF.py
+      hash: md5
+      md5: 6d2143f9ecc0d2873072f0057d95c5d3
+      size: 2303
+    outs:
+    - path: reports/figures/feature_significance_RF.png
+      hash: md5
+      md5: d2e428b4318bcd6a502c9ef9dc0ae8c7
+      size: 44708

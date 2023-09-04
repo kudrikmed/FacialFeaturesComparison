@@ -1,0 +1,17 @@
+stages:
+
+  build_features:
+    cmd: python src/features/build_features.py
+    deps:
+      - data/raw
+      - src/features/build_features.py
+    outs:
+      - data/processed/facial_features.csv
+
+  evaluate_features:
+    cmd: python src/models/feature_significance_RF.py
+    deps:
+      - data/processed
+      - src/models/feature_significance_RF.py
+    outs:
+      - reports/figures/feature_significance_RF.png
