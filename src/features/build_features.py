@@ -4,20 +4,23 @@ from FacialFeaturesExtractor import FacialFeaturesExtractor
 import pandas as pd
 import click
 import logging
-from src.utils.utils import get_project_root
+from pathlib import Path
 
 
 @click.command()
 def build_features():
     # get project root directory
-    root_dir = get_project_root()
+    if os.getcwd() == Path(__file__).parent.parent.parent:
+        root_dir = os.getcwd()
+    else:
+        root_dir = Path(__file__).parent.parent.parent
     # logging
     logger = logging.getLogger(__name__)
     logger_file_path = os.path.join(root_dir, "logs/build_features.log")
     logging.basicConfig(filename=logger_file_path,
                         level=logging.INFO,
                         format="%(asctime)s %(message)s",
-                        filemode="w")
+                        filemode="a")
     logger.info("Feature generating starts...")
     # load rating marks from file
     rating_file_path = os.path.join(root_dir, "data/raw/All_Ratings.xlsx")
@@ -47,7 +50,6 @@ def build_features():
     # get features for each image and add to dataframe
     image_number = 1
     for f in os.listdir(directory):
-        logger.info(f"{image_number} of {len(os.listdir(directory))} from {directory} processing...")
         print(f"{image_number} of {len(os.listdir(directory))} from {directory} processing...")
         filename = os.path.join(directory, f)
 
@@ -118,11 +120,11 @@ def build_features():
         # add row to output dataframe
         output_df = pd.concat([output_df, pd.DataFrame([features_dict])], ignore_index=True)
         image_number += 1
-        break
+
     # save as .csv
     output_path = os.path.join(root_dir, "data/processed/facial_features.csv")
     output_df.to_csv(output_path)
-    logger.info(f"Dataset successfully saved as {output_path}")
+    logger.info(f"Full dataset successfully saved as {output_path}")
 
 
 if __name__ == "__main__":
