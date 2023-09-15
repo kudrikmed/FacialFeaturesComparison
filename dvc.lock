@@ -1,33 +1,33 @@
 schema: '2.0'
 stages:
   evaluate_features:
-    cmd: python src/models/feature_significance_RF.py all
+    cmd: python src/feature_significance_RF.py all
     deps:
     - path: data/processed
       hash: md5
       md5: e029992a7cf7b2a55c6fd801d3eed6df.dir
       size: 1082934
       nfiles: 6
-    - path: src/models/feature_significance_RF.py
+    - path: src/feature_significance_RF.py
       hash: md5
-      md5: 95df8e695e5de1c467b41d4592e0c76f
-      size: 3865
+      md5: e575a2f3758ee025e53d68ea26226ef6
+      size: 3641
     outs:
     - path: reports/figures/feature_significance_RF.png
       hash: md5
-      md5: feb8e49a579b32f41cd27a8f01c6c634
-      size: 44020
+      md5: 68ffa9d6cbef3181a4cdb0f0242874f8
+      size: 44048
   split_gender_race:
-    cmd: python src/features/df_to_race_gender.py
+    cmd: python src/df_to_race_gender.py
     deps:
     - path: data/processed/facial_features.csv
       hash: md5
       md5: 574a8dc1c85b9706489f5f545f2c3644
       size: 541011
-    - path: src/features/df_to_race_gender.py
+    - path: src/df_to_race_gender.py
       hash: md5
-      md5: c3557b30946a8372f201286f33c68066
-      size: 2246
+      md5: 9291cdd8632df4bb4fc0b45067d1ce28
+      size: 1751
     outs:
     - path: data/processed/af_facial_features.csv
       hash: md5
@@ -46,66 +46,66 @@ stages:
       md5: 910d11037abb9d30210e7d8105ad40c4
       size: 73723
   af_evaluate_features:
-    cmd: python src/models/feature_significance_RF.py af
+    cmd: python src/feature_significance_RF.py af
     deps:
     - path: data/processed/af_facial_features.csv
       hash: md5
       md5: b210ede114423a946a2b6806ab13f620
       size: 197374
-    - path: src/models/feature_significance_RF.py
+    - path: src/feature_significance_RF.py
       hash: md5
-      md5: 95df8e695e5de1c467b41d4592e0c76f
-      size: 3865
+      md5: e575a2f3758ee025e53d68ea26226ef6
+      size: 3641
     outs:
     - path: reports/figures/af_feature_significance_RF.png
       hash: md5
-      md5: 0df2caae59e94a7963b61b67d577b189
-      size: 45642
+      md5: 0a3ace840155aef6cedffb14a272912c
+      size: 45622
   am_evaluate_features:
-    cmd: python src/models/feature_significance_RF.py am
+    cmd: python src/feature_significance_RF.py am
     deps:
     - path: data/processed/am_facial_features.csv
       hash: md5
       md5: d11501f74250cc1094cb190ed482fd20
       size: 196652
-    - path: src/models/feature_significance_RF.py
+    - path: src/feature_significance_RF.py
       hash: md5
-      md5: 95df8e695e5de1c467b41d4592e0c76f
-      size: 3865
+      md5: e575a2f3758ee025e53d68ea26226ef6
+      size: 3641
     outs:
     - path: reports/figures/am_feature_significance_RF.png
       hash: md5
-      md5: 1dc333f051ac274d5b6bbe9dd408a136
-      size: 44738
+      md5: 5408224f200a7c9d340393bc0d4902ba
+      size: 44740
   cf_evaluate_features:
-    cmd: python src/models/feature_significance_RF.py cf
+    cmd: python src/feature_significance_RF.py cf
     deps:
     - path: data/processed/cf_facial_features.csv
       hash: md5
       md5: db482536c9aa69a3526d499d94b162a6
       size: 74174
-    - path: src/models/feature_significance_RF.py
+    - path: src/feature_significance_RF.py
       hash: md5
-      md5: 95df8e695e5de1c467b41d4592e0c76f
-      size: 3865
+      md5: e575a2f3758ee025e53d68ea26226ef6
+      size: 3641
     outs:
     - path: reports/figures/cf_feature_significance_RF.png
       hash: md5
-      md5: 67360f10f512180d1baef712d32ccaf7
-      size: 44740
+      md5: eff67edbe8c86fef3eaf693bcef59c7d
+      size: 45672
   cm_evaluate_features:
-    cmd: python src/models/feature_significance_RF.py cm
+    cmd: python src/feature_significance_RF.py cm
     deps:
     - path: data/processed/cm_facial_features.csv
       hash: md5
       md5: 910d11037abb9d30210e7d8105ad40c4
       size: 73723
-    - path: src/models/feature_significance_RF.py
+    - path: src/feature_significance_RF.py
       hash: md5
-      md5: 95df8e695e5de1c467b41d4592e0c76f
-      size: 3865
+      md5: e575a2f3758ee025e53d68ea26226ef6
+      size: 3641
     outs:
     - path: reports/figures/cm_feature_significance_RF.png
       hash: md5
-      md5: c6c8ab0f08b2dabdd018b1adb67f325a
-      size: 44719
+      md5: 2472ea46db218fc7fd1f41150e5c5eb0
+      size: 44704

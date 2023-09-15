@@ -1,18 +1,18 @@
 stages:
 
-#  build_features:
-#    cmd: python src/features/build_features.py
-#    deps:
-#      - data/raw
-#      - src/features/build_features.py
-#    outs:
-#      - data/processed/facial_features.csv
+  build_features:
+    cmd: python src/build_features.py
+    deps:
+      - data/raw
+      - src/build_features.py
+    outs:
+      - data/processed/facial_features.csv
 
   split_gender_race:
-    cmd: python src/features/df_to_race_gender.py
+    cmd: python src/df_to_race_gender.py
     deps:
       - data/processed/facial_features.csv
-      - src/features/df_to_race_gender.py
+      - src/df_to_race_gender.py
     outs:
       - data/processed/af_facial_features.csv
       - data/processed/am_facial_features.csv
@@ -20,41 +20,41 @@ stages:
       - data/processed/cm_facial_features.csv
 
   evaluate_features:
-    cmd: python src/models/feature_significance_RF.py all
+    cmd: python src/feature_significance_RF.py all
     deps:
       - data/processed
-      - src/models/feature_significance_RF.py
+      - src/feature_significance_RF.py
     outs:
       - reports/figures/feature_significance_RF.png
 
   af_evaluate_features:
-    cmd: python src/models/feature_significance_RF.py af
+    cmd: python src/feature_significance_RF.py af
     deps:
       - data/processed/af_facial_features.csv
-      - src/models/feature_significance_RF.py
+      - src/feature_significance_RF.py
     outs:
       - reports/figures/af_feature_significance_RF.png
 
   am_evaluate_features:
-    cmd: python src/models/feature_significance_RF.py am
+    cmd: python src/feature_significance_RF.py am
     deps:
       - data/processed/am_facial_features.csv
-      - src/models/feature_significance_RF.py
+      - src/feature_significance_RF.py
     outs:
       - reports/figures/am_feature_significance_RF.png
 
   cf_evaluate_features:
-    cmd: python src/models/feature_significance_RF.py cf
+    cmd: python src/feature_significance_RF.py cf
     deps:
       - data/processed/cf_facial_features.csv
-      - src/models/feature_significance_RF.py
+      - src/feature_significance_RF.py
     outs:
       - reports/figures/cf_feature_significance_RF.png
 
   cm_evaluate_features:
-    cmd: python src/models/feature_significance_RF.py cm
+    cmd: python src/feature_significance_RF.py cm
     deps:
       - data/processed/cm_facial_features.csv
-      - src/models/feature_significance_RF.py
+      - src/feature_significance_RF.py
     outs:
       - reports/figures/cm_feature_significance_RF.png

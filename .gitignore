@@ -90,3 +90,6 @@ target/
 
 # venc
 /venv/
+
+# logs
+logs/*
