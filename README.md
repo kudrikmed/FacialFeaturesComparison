@@ -6,7 +6,6 @@
 - [Dataset](#dataset)
 - [Methodology](#methodology)
 - [Results](#results)
-- [Future Plans](#future plans)
 - [Contact](#contact)
 
 ---
